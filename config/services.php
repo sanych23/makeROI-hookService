@@ -20,7 +20,7 @@ return [
 
     'hook' => [
         'url' => env('HOOK_URL'),
-        'uri' => '04fd4fbe-cab7-40c6-b624-dddfde7b0ced'
+        'uri' => '5e76c5b6-6d74-4488-b411-6d4a2f4d9c9f'
     ],
 
     'postmark' => [
