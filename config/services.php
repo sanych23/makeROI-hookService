@@ -19,8 +19,7 @@ return [
     ],
 
     'hook' => [
-        'url' => env('HOOK_URL'),
-        'uri' => '5e76c5b6-6d74-4488-b411-6d4a2f4d9c9f'
+        'url' => env('HOOK_URL')
     ],
 
     'postmark' => [

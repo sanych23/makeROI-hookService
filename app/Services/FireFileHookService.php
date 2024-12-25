@@ -19,22 +19,16 @@ class FireFileHookService
 
     }
 
-    public function sendId(): bool
+    public function sendId()
     {
         $titleData = FireFileHelper::parseTitle($this->fireFile);
 
-        if(count($titleData) < 3){
-            Log::debug('Lead Id not found');
-            return false;
-        }
-
         Log::debug(Http::baseUrl(config('services.hook.url'))
-            ->post(config('services.hook.uri'), [
-                'lead_id' => $titleData[2],
-                'link' => 'https://share.fireflies.ai/embed/meetings/meetingId'
+            ->post('/', [
+                'lead_id' => $titleData[2] ?? null,
+                'link' => 'https://share.fireflies.ai/embed/meetings/meetingId',
+                'title' => $this->fireFile->title
             ]));
-
-        return true;
     }
 }
 

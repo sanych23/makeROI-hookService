@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MeetingRequest;
 use App\Jobs\MeetHandlerJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
 class HookHandlerController extends Controller
@@ -15,7 +16,7 @@ class HookHandlerController extends Controller
             return response(['message' => 'Invalid request'], 404)->header('Content-Type', 'application/json');
         }
 
-        MeetHandlerJob::dispatch($request->validated()['meetingId']);
+        MeetHandlerJob::dispatch(Arr::get($request->validated(), 'meetingId'));
 
         return response(['message' => 'Success request'], 200)->header('Content-Type', 'application/json');
     }

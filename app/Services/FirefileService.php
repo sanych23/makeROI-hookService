@@ -31,7 +31,8 @@ class FirefileService
 
         return new FireFileDTO(
             Arr::get($data, 'data.transcript.id'),
-            Arr::get($data, 'data.transcript.title')
+            Arr::get($data, 'data.transcript.title'),
+            $meetId
         );
     }
 }
