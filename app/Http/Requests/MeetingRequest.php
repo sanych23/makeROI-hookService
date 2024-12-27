@@ -9,8 +9,7 @@ class MeetingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'meetingId' => ['required'],
-            'eventType' => ['required']
+            'meetingId' => 'required|max:100|string',
         ];
     }
 }

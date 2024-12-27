@@ -2,11 +2,9 @@
 
 namespace App\Services;
 
-use App\DTO\FireFileDTO;
+use App\DTO\TranscriptionDTO;
 use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class FirefileService
 {
@@ -19,20 +17,13 @@ class FirefileService
             ->withToken(config('services.firefile.token'));
     }
 
-    public function get(string $meetId): FireFileDTO
+    public function transcribe(string $meetId): TranscriptionDTO
     {
         $response = $this->client->asJson()->acceptJson()->post("graphql", [
             "query" => 'query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { id title } }',
             "variables" => ["transcriptId" => $meetId]
         ]);
 
-
-        $data = $response->json();
-
-        return new FireFileDTO(
-            Arr::get($data, 'data.transcript.id'),
-            Arr::get($data, 'data.transcript.title'),
-            $meetId
-        );
+        return TranscriptionDTO::makeFromApi($response->json());
     }
 }

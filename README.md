@@ -7,7 +7,7 @@
 3. В .env файле указываем авторизационный токен и адрес для отправки хука.
 
 ```
-BEARER_TOKEN= ***SECRET TOKEN***
+FIREFILE_TOKEN= ***SECRET TOKEN***
 HOOK_URL=https://example.site/hook/handler
 ```
 
@@ -20,14 +20,13 @@ php artisan queue:work
  
  По умолчанию адрес, который принимает запросы выглядит так:
 ```
-http://127.0.0.1:8000/api/handlers/meeting
+http://127.0.0.1:8000/api/webhooks/meeting
 ```
 
 Обработчик на входе ожидает POST запрос вида:
 ```json
 {
     "meetingId": "f2jzbkx5jnu7WYRR",
-    "eventType": "Transcription completed"
 }
 ```
 

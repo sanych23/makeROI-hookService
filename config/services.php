@@ -14,14 +14,6 @@ return [
     |
     */
 
-    'firefile' => [
-        'token' => env('BEARER_TOKEN'),
-    ],
-
-    'hook' => [
-        'url' => env('HOOK_URL')
-    ],
-
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
@@ -41,6 +33,14 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
+    ],
+
+    'firefile' => [
+        'token' => env('FIREFILE_TOKEN'),
+    ],
+
+    'hook' => [
+        'url' => env('HOOK_URL')
     ],
 
 ];
